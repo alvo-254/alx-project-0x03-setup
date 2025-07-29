@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "@/components/common/Header";
+import { useCounter } from "@/context/CounterContext";
 
 const CounterApp: React.FC = () => {
-  const [count, setCount] = useState(0);
-
-  const increment = () => setCount(count + 1);
-  const decrement = () => setCount(count > 0 ? count - 1 : 0);
+  const { count, increment, decrement } = useCounter();
 
   const getMessage = () => {
     if (count === 0) return "🙈 No clicks yet!";
@@ -16,8 +14,8 @@ const CounterApp: React.FC = () => {
   return (
     <>
       <Header />
-      <main className="flex flex-col items-center justify-center h-[calc(100vh-80px)] bg-gradient-to-br from-yellow-400 to-pink-500 text-white">
-        <h1 className="text-5xl font-extrabold mb-4">🎯 Counter App</h1>
+      <main className="flex flex-col items-center justify-center h-[calc(100vh-80px)] bg-gradient-to-br from-green-200 to-green-500 text-white">
+        <h1 className="text-5xl font-extrabold mb-4">🌿 Context Counter App</h1>
 
         <p className="text-lg font-medium mb-2">
           Current count: {count} {getMessage()}
@@ -41,7 +39,7 @@ const CounterApp: React.FC = () => {
         </div>
 
         <p className="mt-8 text-sm opacity-80">
-          Keep clicking... What happens at 100? 😏
+          Context power! ✨ No prop drilling needed!
         </p>
       </main>
     </>
